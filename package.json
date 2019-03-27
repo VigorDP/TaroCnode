@@ -40,6 +40,7 @@
     "@tarojs/plugin-babel": "^1.2.0-beta.7",
     "@tarojs/plugin-csso": "^1.2.0-beta.7",
     "@tarojs/plugin-sass": "^1.2.0-beta.7",
+    "@tarojs/plugin-typescript": "^1.2.15",
     "@tarojs/plugin-uglifyjs": "^1.2.0-beta.7",
     "@tarojs/webpack-runner": "^1.2.0-beta.7",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -52,6 +53,7 @@
     "eslint-config-taro": "^1.2.0-beta.7",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-taro": "^1.2.0-beta.7"
+    "eslint-plugin-taro": "^1.2.0-beta.7",
+    "typescript": "^3.2.2"
   }
 }
