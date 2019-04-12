@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "taro",
-  "description": "taro learn",
-  "appid": "touristappid",
+  "projectname": "TaroCnode",
+  "description": "Taro Cnode 社区",
+  "appid": "wx9207842ecb18218b",
   "setting": {
     "urlCheck": true,
     "es6": false,
