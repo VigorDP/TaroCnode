@@ -1,7 +1,6 @@
-import { IStore } from "../../interfaces/store";
 import Taro from "@tarojs/taro";
 
-class Store implements IStore {
+class Store {
   removeItem(key) {
     return Taro.removeStorageSync(key);
   }
@@ -16,4 +15,4 @@ class Store implements IStore {
   }
 }
 
-module.exports = Store;
+module.exports = new Store();

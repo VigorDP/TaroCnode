@@ -1,6 +1,7 @@
 import "@tarojs/async-await";
 import Taro, { Component } from "@tarojs/taro";
 import { Provider } from "@tarojs/redux";
+import "./custom-variables.scss";
 
 import Index from "./pages/index";
 
@@ -27,9 +28,9 @@ class App extends Component {
     },
     tabBar: {
       color: "#666",
-      selectedColor: "#b4282d",
+      selectedColor: "#E93B3D",
       backgroundColor: "#fafafa",
-      borderStyle: "black",
+      borderStyle: "#E93B3D",
       list: [
         {
           pagePath: "pages/home/index",
@@ -39,8 +40,8 @@ class App extends Component {
         },
         {
           pagePath: "pages/me/index",
-          iconPath: "./assets/tab-bar/cate.png",
-          selectedIconPath: "./assets/tab-bar/cate-active.png",
+          iconPath: "./assets/tab-bar/user.png",
+          selectedIconPath: "./assets/tab-bar/user-active.png",
           text: "我的"
         }
       ]

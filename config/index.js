@@ -22,13 +22,10 @@ const config = {
       ]
     }
   },
-  defineConstants: {
-  },
+  defineConstants: {},
   copy: {
-    patterns: [
-    ],
-    options: {
-    }
+    patterns: [],
+    options: {}
   },
   weapp: {
     module: {
@@ -61,6 +58,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     module: {
       postcss: {
         autoprefixer: {
