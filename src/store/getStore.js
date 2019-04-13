@@ -1,5 +1,4 @@
 import promiseMiddleware from 'redux-promise'
-import Immutable from 'immutable'
 import {
   createStore,
   applyMiddleware,

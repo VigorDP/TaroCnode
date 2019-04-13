@@ -3,9 +3,9 @@ import Taro, { Component } from "@tarojs/taro";
 import { Provider } from "@tarojs/redux";
 import "./custom-variables.scss";
 
-import Index from "./pages/index";
+import Index from "./pages/home/index";
 
-import configStore from "./store";
+// import configStore from "./store";
 
 import "./app.scss";
 
@@ -15,7 +15,7 @@ import "./app.scss";
 //   require('nerv-devtools')
 // }
 
-const store = configStore();
+// const store = configStore();
 
 class App extends Component {
   config = {
@@ -62,9 +62,9 @@ class App extends Component {
   // 请勿修改此函数
   render() {
     return (
-      <Provider store={store}>
-        <Index />
-      </Provider>
+      // <Provider store={store}>
+      <Index />
+      // </Provider>
     );
   }
 }

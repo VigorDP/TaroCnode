@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro'
 import {
-  API_USER,
   API_USER_LOGIN
 } from '@constants/api'
 
@@ -36,8 +35,7 @@ export default async function fetch(options) {
     url,
     payload,
     method = 'GET',
-    showToast = true,
-    autoLogin = true
+    showToast = true
   } = options
   const token = await getStorage('token')
   const header = token ? {
@@ -68,7 +66,6 @@ export default async function fetch(options) {
     if (url === API_USER_LOGIN) {
       await updateStorage(data)
     }
-
     return data
   }).catch((err) => {
     const defaultMsg = err.code === CODE_AUTH_EXPIRED ? '登录失效' : '请求异常'
@@ -76,12 +73,6 @@ export default async function fetch(options) {
       Taro.showToast({
         title: err && err.errorMsg || defaultMsg,
         icon: 'none'
-      })
-    }
-
-    if (err.code === CODE_AUTH_EXPIRED && autoLogin) {
-      Taro.navigateTo({
-        url: '/pages/user-login/user-login'
       })
     }
 

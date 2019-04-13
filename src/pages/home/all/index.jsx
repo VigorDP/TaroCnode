@@ -4,16 +4,16 @@ import { connect } from "@tarojs/redux";
 
 import "./index.scss";
 
-@connect(
-  ({ counter }) => ({
-    counter
-  }),
-  dispatch => ({
-    add() {},
-    dec() {},
-    asyncAdd() {}
-  })
-)
+// @connect(
+//   ({ counter }) => ({
+//     counter
+//   }),
+//   dispatch => ({
+//     add() {},
+//     dec() {},
+//     asyncAdd() {}
+//   })
+// )
 class Index extends Component {
   config = {
     navigationBarTitleText: "首页"
