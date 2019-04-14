@@ -1,21 +1,14 @@
 import Taro, { Component } from "@tarojs/taro";
-import { View, Button } from "@tarojs/components";
-import { connect } from "@tarojs/redux";
+import { View } from "@tarojs/components";
 import { AtTabs, AtTabsPane } from "taro-ui";
-// import { add, minus, asyncAdd } from "../../actions/counter";
-import Tab from "./tab";
+
+import AllTab from "./tab-all";
+import GoodTab from "./tab-good";
+import ShareTab from "./tab-share";
+import AskTab from "./tab-ask";
+import JobTab from "./tab-job";
 import styles from "./index.module.scss";
 
-// @connect(
-//   ({ counter }) => ({
-//     counter
-//   }),
-//   dispatch => ({
-//     add() {},
-//     dec() {},
-//     asyncAdd() {}
-//   })
-// )
 class Index extends Component {
   config = {
     navigationBarTitleText: "CNode 社区"
@@ -39,21 +32,7 @@ class Index extends Component {
 
   componentWillUnmount() {}
 
-  componentDidShow() {
-    // Taro.getLocation({ type: "gcj02 " }).then(data => console.log(data));
-    // Taro.showToast({
-    //   title: "成功",
-    //   icon: "success"
-    // });
-    // Taro.setTabBarBadge({ index: 1, text: "1" });
-    // Taro.showLoading({
-    //   title: "加载中..."
-    // }).then(res =>
-    //   setTimeout(() => {
-    //     Taro.hideLoading();
-    //   }, 2000)
-    // );
-  }
+  componentDidShow() {}
 
   componentDidHide() {}
 
@@ -72,24 +51,40 @@ class Index extends Component {
           tabList={tabList}
           onClick={this.handleClick.bind(this)}
         >
-          <AtTabsPane current={this.state.current} index={0}>
-            <Tab ownProps={{ tab: "all" }} />
+          <AtTabsPane
+            current={this.state.current}
+            index={0}
+            className={styles.panel}
+          >
+            <AllTab ownProps={{ tab: "all" }} />
           </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={1}>
-            <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>
-              标签页二的内容
-            </View>
+          <AtTabsPane
+            current={this.state.current}
+            index={1}
+            className={styles.panel}
+          >
+            <GoodTab ownProps={{ tab: "good" }} />
           </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={2}>
-            <Button
-              className='btn-max-w'
-              plain
-              type='primary'
-              open-type='getUserInfo'
-              onGetUserInfo={this.handleUserInfo}
-            >
-              授权
-            </Button>
+          <AtTabsPane
+            current={this.state.current}
+            index={2}
+            className={styles.panel}
+          >
+            <ShareTab ownProps={{ tab: "share" }} />
+          </AtTabsPane>
+          <AtTabsPane
+            current={this.state.current}
+            index={3}
+            className={styles.panel}
+          >
+            <AskTab ownProps={{ tab: "ask" }} />
+          </AtTabsPane>
+          <AtTabsPane
+            current={this.state.current}
+            index={4}
+            className={styles.panel}
+          >
+            <JobTab ownProps={{ tab: "job" }} />
           </AtTabsPane>
         </AtTabs>
       </View>

@@ -7,16 +7,14 @@ import Index from "pages/home/index";
 import "./custom-variables.scss";
 import "./app.scss";
 
-// 如果需要在 h5 环境中开启 React Devtools
-// 取消以下注释：
-// if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
-//   require('nerv-devtools')
-// }
+if (process.env.NODE_ENV !== "production" && process.env.TARO_ENV === "h5") {
+  require("nerv-devtools");
+}
 
 const store = configStore();
 class App extends Component {
   config = {
-    pages: ["pages/home/index", "pages/me/index"],
+    pages: ["pages/home/index", "pages/me/index", "pages/detail/index"],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
@@ -27,7 +25,7 @@ class App extends Component {
       color: "#666",
       selectedColor: "#E93B3D",
       backgroundColor: "#fafafa",
-      borderStyle: "#E93B3D",
+      borderStyle: "white",
       list: [
         {
           pagePath: "pages/home/index",

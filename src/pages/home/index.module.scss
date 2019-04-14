@@ -1,5 +1,11 @@
 .home {
-  display: flex;
-  flex: 1;
-  min-height: 100%;
+  position: relative;
+  height: 100%;
+
+}
+
+.panel {
+  height: 1500px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
