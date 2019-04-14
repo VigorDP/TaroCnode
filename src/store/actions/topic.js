@@ -1,6 +1,8 @@
-import { createAction } from 'redux-actions'
-import { getTopicByTabName } from '../../service'
-import * as Type from '../../constant/actionType'
+import {
+  createAction
+} from 'redux-actions'
+import getTopicByTabName from 'api'
+import * as Type from 'store/actionType'
 
 /**
  * 获取主题内容

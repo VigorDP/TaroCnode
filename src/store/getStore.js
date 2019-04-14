@@ -4,7 +4,7 @@ import {
   applyMiddleware,
   compose
 } from 'redux'
-import rootReducer from '../reducers'
+import rootReducer from './reducers'
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -26,7 +26,12 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 )
 
+let store
+
 export default function configStore() {
-  const store = createStore(rootReducer, enhancer)
+  if (!store) {
+    store = createStore(rootReducer, enhancer)
+    return store
+  }
   return store
 }

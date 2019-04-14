@@ -1,10 +1,6 @@
 import Taro from '@tarojs/taro'
-import {
-  API_USER_LOGIN
-} from '@constants/api'
 
 const CODE_SUCCESS = '200'
-const CODE_AUTH_EXPIRED = '600'
 
 function getStorage(key) {
   return Taro.getStorage({
@@ -30,7 +26,7 @@ function updateStorage(data = {}) {
  * // NOTE 需要注意 RN 不支持 *StorageSync，此处用 async/await 解决
  * @param {*} options
  */
-export default async function fetch(options) {
+async function fetch(options) {
   const {
     url,
     payload,
@@ -53,32 +49,26 @@ export default async function fetch(options) {
     header
   }).then(async (res) => {
     const {
-      code,
       data
     } = res.data
-    if (code !== CODE_SUCCESS) {
-      if (code === CODE_AUTH_EXPIRED) {
-        await updateStorage({})
-      }
-      return Promise.reject(res.data)
+    return {
+      data,
+      tab: payload.tab
     }
-
-    if (url === API_USER_LOGIN) {
-      await updateStorage(data)
-    }
-    return data
   }).catch((err) => {
-    const defaultMsg = err.code === CODE_AUTH_EXPIRED ? '登录失效' : '请求异常'
     if (showToast) {
       Taro.showToast({
-        title: err && err.errorMsg || defaultMsg,
+        title: err && err.errorMsg || '请求异常',
         icon: 'none'
       })
     }
 
     return Promise.reject({
-      message: defaultMsg,
-      ...err
+      err
     })
   })
+}
+/* eslint-disable */
+export function get(options) {
+  return fetch(options)
 }

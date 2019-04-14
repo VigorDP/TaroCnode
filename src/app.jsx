@@ -1,12 +1,10 @@
 import "@tarojs/async-await";
 import Taro, { Component } from "@tarojs/taro";
 import { Provider } from "@tarojs/redux";
+import configStore from "store/getStore";
+import Index from "pages/home/index";
+
 import "./custom-variables.scss";
-
-import Index from "./pages/home/index";
-
-// import configStore from "./store";
-
 import "./app.scss";
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -15,8 +13,7 @@ import "./app.scss";
 //   require('nerv-devtools')
 // }
 
-// const store = configStore();
-
+const store = configStore();
 class App extends Component {
   config = {
     pages: ["pages/home/index", "pages/me/index"],
@@ -62,9 +59,9 @@ class App extends Component {
   // 请勿修改此函数
   render() {
     return (
-      // <Provider store={store}>
-      <Index />
-      // </Provider>
+      <Provider store={store}>
+        <Index />
+      </Provider>
     );
   }
 }

@@ -1,4 +1,5 @@
-import path from 'path'
+/* eslint-disable */
+const path = require('path');
 
 const config = {
   projectName: 'taro',

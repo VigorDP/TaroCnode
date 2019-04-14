@@ -1,7 +1,14 @@
-import { Topic } from '../records'
-import { handleActions } from 'redux-actions'
-import { getTopicByTabNameAction, clearTopicAction } from '../actions'
+import {
+  handleActions
+} from 'redux-actions'
 import Immutable from 'immutable'
+import {
+  Topic
+} from '../records'
+import {
+  getTopicByTabNameAction,
+  clearTopicAction
+} from '../actions'
 
 const defaultMap = Immutable.Map({
   all: Immutable.List(),
@@ -11,18 +18,26 @@ const defaultMap = Immutable.Map({
   ask: Immutable.List()
 })
 
-export const topic = handleActions(
-  {
-    [getTopicByTabNameAction](state, { payload: { tab = 'all', data = [] } }) {
+export default handleActions({
+    [getTopicByTabNameAction](state, {
+      payload: {
+        tab = 'all',
+        data = []
+      }
+    }) {
       return state.set(
         tab,
         data
-          .map(getJsFormTopic)
-          .map(item => new Topic(item))
-          .reduce(($topicList, next) => $topicList.push(next), state.get(tab))
+        .map(getJsFormTopic)
+        .map(item => new Topic(item))
+        .reduce(($topicList, next) => $topicList.push(next), state.get(tab))
       )
     },
-    [clearTopicAction](state, { payload: { tab } }) {
+    [clearTopicAction](state, {
+      payload: {
+        tab
+      }
+    }) {
       return state.set(tab, Immutable.List())
     }
   },

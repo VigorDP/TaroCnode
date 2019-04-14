@@ -3,8 +3,8 @@ import { View, Button } from "@tarojs/components";
 import { connect } from "@tarojs/redux";
 import { AtTabs, AtTabsPane } from "taro-ui";
 // import { add, minus, asyncAdd } from "../../actions/counter";
-import AllContainer from "./all/index";
-import "./index.scss";
+import Tab from "./tab";
+import styles from "./index.module.scss";
 
 // @connect(
 //   ({ counter }) => ({
@@ -66,21 +66,14 @@ class Index extends Component {
       { title: "招聘" }
     ];
     return (
-      <View
-        style={{
-          display: "flex",
-          flex: 1,
-          minHeight: "100%",
-          backgroundColor: "red"
-        }}
-      >
+      <View className={styles.home}>
         <AtTabs
           current={this.state.current}
           tabList={tabList}
           onClick={this.handleClick.bind(this)}
         >
           <AtTabsPane current={this.state.current} index={0}>
-            <AllContainer />
+            <Tab ownProps={{ tab: "all" }} />
           </AtTabsPane>
           <AtTabsPane current={this.state.current} index={1}>
             <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>

@@ -1,17 +1,18 @@
 import {
   get
-} from '../utils/request'
+} from 'utils/request'
 
-function getTopicByTabName(params ? : {}) {
+const BASEURL = 'https://cnodejs.org/api/v1/';
+
+export default function getTopicByTabName(params) {
   const {
     page,
     tab
   } = params
-  return get(`topics${tab ? `?tab=${tab}&page=${page}&limit=10` : ``}`, {
-    timeout: 10000
+  return get({
+    url: `${BASEURL}topics${tab ? `?tab=${tab}&page=${page}&limit=10` : ``}`,
+    payload: {
+      tab
+    }
   })
-}
-
-export {
-  getTopicByTabName
 }
