@@ -19,7 +19,6 @@ export default class ParseComponent extends Component {
   render() {
     return (
       <View className={styles.scrollview}>
-        <Header />
         <ScrollView
           scrollY
           style={{ height: getWindowHeight() }}
