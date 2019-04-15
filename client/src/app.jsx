@@ -11,6 +11,22 @@ if (process.env.NODE_ENV !== "production" && process.env.TARO_ENV === "h5") {
   require("nerv-devtools");
 }
 
+wx.cloud.init();
+
+wx.cloud.callFunction({
+  // 云函数名称
+  name: "test",
+  // 传给云函数的参数
+  data: {
+    a: 1,
+    b: 2
+  },
+  success(res) {
+    console.log("clound", res.result.sum); // 3
+  },
+  fail: console.error
+});
+
 const store = configStore();
 class App extends Component {
   config = {

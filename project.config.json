@@ -1,13 +1,18 @@
 {
-  "miniprogramRoot": "./dist",
-  "projectname": "TaroCnode",
-  "description": "Taro Cnode 社区",
-  "appid": "wx9207842ecb18218b",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false
-  },
-  "compileType": "miniprogram"
+	"miniprogramRoot": "client/dist/",
+	"projectname": "TaroCnode",
+	"description": "Taro Cnode 社区",
+	"appid": "wx9207842ecb18218b",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionRoot": "cloud/functions/",
+	"cloud": true,
+	"condition": {}
 }
