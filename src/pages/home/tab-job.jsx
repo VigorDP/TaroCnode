@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro";
 import { connect } from "@tarojs/redux";
-import { View, ScrollView } from "@tarojs/components";
+import { ScrollView } from "@tarojs/components";
 import Immutable from "immutable";
 import { AtCard, AtLoadMore } from "taro-ui";
 import { getWindowHeight } from "utils/style";

@@ -1,41 +1,35 @@
 import Taro, { Component } from "@tarojs/taro";
-import { ScrollView, Button, Text } from "@tarojs/components";
-import { connect } from "@tarojs/redux";
+import { ScrollView, View } from "@tarojs/components";
+import { getWindowHeight } from "utils/style";
 
-class Index extends Component {
-  config = {
-    navigationBarTitleText: "详情"
-  };
+import WxParse from "components/wxParse/wxParse";
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps);
+import styles from "./wxParse.module.scss";
+import "./markdown.scss";
+/**
+ * 需要注意的是，在项目的 config/index.js 文件中，有 copy 模板与样式的操作
+ */
+export default class ParseComponent extends Component {
+  componentDidMount() {
+    const article = this.$router.params.content;
+    WxParse.wxParse("article", "html", article, this.$scope, 5);
+    Taro.setNavigationBarTitle({ title: this.$router.params.title });
   }
-
-  componentWillMount() {
-    Taro.showLoading({
-      title: "加载中..."
-    });
-  }
-
-  componentDidShow() {
-    Taro.hideLoading();
-  }
-
-  componentDidHide() {}
 
   render() {
     return (
-      <ScrollView
-        className='scrollview'
-        scrollY
-        scrollWithAnimation
-        scrollTop='0'
-        style='height: 1500px;'
-      >
-        <Text>{this.$router.params.content}</Text>
-      </ScrollView>
+      <View className={styles.scrollview}>
+        <Header />
+        <ScrollView
+          scrollY
+          style={{ height: getWindowHeight() }}
+          lowerThreshold={100}
+          enableBackToTop
+        >
+          <import src='../../components/wxParse/wxParse.wxml' />
+          <template is='wxParse' data='{{wxParseData:article.nodes}}' />
+        </ScrollView>
+      </View>
     );
   }
 }
-
-export default Index;

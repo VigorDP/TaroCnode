@@ -38,7 +38,8 @@
     "redux-immutable": "4.0.0",
     "redux-logger": "3.0.6",
     "redux-promise": "0.6.0",
-    "taro-ui": "2.1.0"
+    "taro-ui": "2.1.0",
+    "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
     "@tarojs/plugin-babel": "1.2.25",
