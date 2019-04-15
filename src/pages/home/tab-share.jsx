@@ -2,7 +2,8 @@ import Taro, { Component } from "@tarojs/taro";
 import { connect } from "@tarojs/redux";
 import { View, ScrollView } from "@tarojs/components";
 import Immutable from "immutable";
-import { AtCard } from "taro-ui";
+import { AtCard, AtLoadMore } from "taro-ui";
+import { getWindowHeight } from "utils/style";
 import dayjs from "dayjs";
 import { getTopicByTabNameAction, clearTopicAction } from "store/actions";
 import styles from "./index.module.scss";
@@ -27,14 +28,14 @@ class AllTab extends Component {
     Object.assign(this, this.props.ownProps);
   }
   state = {
-    refreshing: true
+    status: "loading"
   };
 
   currentPage = 1;
 
   loadData = async (page = 1, isResetCurrentPage) => {
     const {
-      payload: { success }
+      payload: { data, success }
     } = await this.props.dispatchGetTopicByTabNameAction({
       page
     });
@@ -45,13 +46,13 @@ class AllTab extends Component {
 
     if (success) {
       page !== 1 && (this.currentPage = page);
-      this.setState({
-        refreshing: false
-      });
     } else {
       page !== 1 && (this.currentPage = page - 1);
+    }
+
+    if (data && !data.length) {
       this.setState({
-        refreshing: false
+        status: "noMore"
       });
     }
   };
@@ -89,16 +90,19 @@ class AllTab extends Component {
     });
     return (
       <ScrollView
-        className='scrollview'
         scrollY
-        scrollWithAnimation
-        scrollTop='100'
-        style='height: 1500px;'
-        lowerThreshold={0}
+        style={{ height: getWindowHeight() }}
+        lowerThreshold={100}
         enableBackToTop
         onScrollToLower={this.onEndReached}
       >
         {renderItem}
+        {
+          <AtLoadMore
+            onClick={this.handleClick.bind(this)}
+            status={this.state.status}
+          />
+        }
       </ScrollView>
     );
   }

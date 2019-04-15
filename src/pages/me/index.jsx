@@ -7,17 +7,18 @@ class Index extends Component {
     navigationBarTitleText: "我的"
   };
 
+  constructor(props) {
+    super(props);
+    // Taro.showLoading({
+    //   title: "加载中..."
+    // });
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps);
   }
 
-  componentWillUnmount() {
-    Taro.showLoading({
-      title: "加载中..."
-    });
-  }
-
-  componentDidShow() {
+  componentDidMount() {
     Taro.hideLoading();
   }
 

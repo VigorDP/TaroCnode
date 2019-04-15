@@ -1,11 +1,13 @@
 .home {
   position: relative;
   height: 100%;
-
 }
 
 .panel {
-  height: 1500px;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+}
+
+.card {
+  margin-top: 20px;
 }

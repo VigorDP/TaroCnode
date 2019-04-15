@@ -19,6 +19,7 @@ class Index extends Component {
     this.state = {
       current: 0
     };
+    console.log("constructor");
   }
   handleClick(value) {
     this.setState({
@@ -30,13 +31,32 @@ class Index extends Component {
     console.log(data);
   };
 
-  componentWillUnmount() {}
+  componentWillMount() {
+    console.log("will mount");
+  }
 
-  componentDidShow() {}
+  componentDidMount() {
+    console.log("did mount");
+  }
 
-  componentDidHide() {}
+  componentDidShow() {
+    console.log("did show");
+  }
+
+  componentDidHide() {
+    console.log("did hide");
+  }
+
+  componentCatchError() {
+    console.log("error");
+  }
+
+  componentDidCatchError() {
+    console.log("did catch error");
+  }
 
   render() {
+    console.log("render");
     const tabList = [
       { title: "全部" },
       { title: "精华" },
