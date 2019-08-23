@@ -1,4 +1,5 @@
 {
+  "plugins": ["react", "prettier"],
   "extends": ["taro"],
   "rules": {
     "no-unused-vars": [
